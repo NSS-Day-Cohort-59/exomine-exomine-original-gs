@@ -1,8 +1,8 @@
-import { getFacilities, setFacilities, getMinerals, getFacilityResources } from "./database.js"
+import { getFacilities, setFacility, getMinerals, getfacilityResources } from "./database.js"
 
 const facilities = getFacilities()
 const minerals = getMinerals()
-const FacilityResources = getFacilityResources()
+const FacilityResources = getfacilityResources()
 
 document.addEventListener(
     "change",
@@ -11,12 +11,12 @@ document.addEventListener(
 
         if (event.target.id === "facility") {
 
-            setFacilities(parseInt(event.target.value))
+            setFacility(parseInt(event.target.value))
 
-            const [,facilityPrimaryKey] = facilityClicked.id.split("--")
+            const [,facilityPrimaryKey] = facilityClicked.id
             let html = ""
                 let matchedFacility = null
-                for (facility of facilities) {
+                for (const facility of facilities) {
                     if (parseInt(facilityPrimaryKey) === facility.id) {
                         matchedFacility = facility
                     }
@@ -44,10 +44,9 @@ export const Facilities = () => {
 
     let html = `<ul><select id="facility"><option value ="0">Select Facility`
 
-    // Use .map() for converting objects to <li> elements
     const listItems = facilities.map(facility => {
         return `<li>
-            <option value="${facility.id}"/>${facility.name}
+        <option value="${facility.id}"/>${facility.name}
         </li>`
     })
 

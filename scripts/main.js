@@ -1,15 +1,11 @@
-import { Governors } from "./governors.js"
+// import { Governors } from "./governors.js"
 import { Facilities } from "./facilities.js"
 
 const mainContainer = document.querySelector("#container");
 
 const applicationHTML = `
-<h1>Brewed Awakenings</h1>
-<article class="details">
-    <section class="detail--column list details__employees">
-        <h2>Governors</h2>
-        ${Governors()}
-    </section>
+<h1>Exomine</h1>
+    <article class="details">
     <section class="detail--column list details__products">
         <h2>Products</h2>
         ${Facilities()}
