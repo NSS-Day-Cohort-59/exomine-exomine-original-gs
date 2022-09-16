@@ -10,7 +10,7 @@ const database = {
         { id: 8, colonyId: 3, name: "Orange Cone", active: false },
         { id: 9, colonyId: 1, name: "Yellow Sunshine", active: true },
         { id: 10, colonyId: 2, name: "Purple Rain", active: true }
-    ]
+    ],
     transientState: {}
 }
 
@@ -39,6 +39,6 @@ export const purchaseMineral = () => {
 
         // Broadcast custom event to entire documement so that the
         // application can re-render and update state
-        document.dispatchEvent( new CustomEvent("stateChanged") ) {
+        document.dispatchEvent( new CustomEvent("stateChanged") ) ;{
     }
-
+}
