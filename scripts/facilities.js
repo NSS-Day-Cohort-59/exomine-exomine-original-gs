@@ -1,8 +1,8 @@
-import { getFacilities, getMinerals, getfacilityResources } from "./database.js"
+import { getFacilities, setFacilities, getMinerals, getFacilityResources } from "./database.js"
 
 const facilities = getFacilities()
 const minerals = getMinerals()
-facilityResources = getfacilityResources()
+const FacilityResources = getFacilityResources()
 
 document.addEventListener(
     "change",
@@ -14,20 +14,30 @@ document.addEventListener(
             setFacilities(parseInt(event.target.value))
 
             const [,facilityPrimaryKey] = facilityClicked.id.split("--")
-
+            let html = ""
                 let matchedFacility = null
                 for (facility of facilities) {
                     if (parseInt(facilityPrimaryKey) === facility.id) {
                         matchedFacility = facility
                     }
                 }
-                for (const resources of facilityResources) {
-                    if (matchedFacility.id === facility.facilityId) {
-            return `<li>
-            <input type="radio" name="minerals" value="${mineral.id}"/> ${mineral.name}
-                    </li>`}
+
+                let matchedMineralFacility = null
+                for (const resources of FacilityResources) {
+                    if (matchedFacility.id === resources.facilityId) {
+                        matchedMineralFacility = resources
+                        for (mineral of minerals) {
+                            if (matchedMineralFacility.mineralId === mineral.id) {
+                            html += `<li>
+                    <input type="radio" name="mineral" value="${mineral.id}"/>${matchedMineralFacility.quantity} tons of ${mineral.name}
+                            </li>`
+                        }   
+                    }
+                }
+            }
+                return html
         }
-    }
+    })
     
 
 export const Facilities = () => {
