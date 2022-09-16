@@ -15,16 +15,19 @@ const database = {
         {id: 1, name: "Europa"}
     ],
     colonyResources: [
-        {id: 1, mineralId: 1, colonyId: 1, quantity: 10}
+        {id: 1, mineralId: 1, colonyId: 1, quantity: 10},
+        {id: 2, mineralId: 2, colonyId: 1, quantity: 20}
     ],
     facilities: [
         {id: 1, name: "Io Facility", active: true}
     ],
     facilityResources: [
-        {id: 1, facilityId: 1, mineralId: 1, quantity: 100}
+        {id: 1, facilityId: 1, mineralId: 1, quantity: 100},
+        {id: 2, facilityId: 1, mineralId: 2, quantity: 20}
     ],
     minerals: [
-        {id: 1, name: "Iron"}
+        {id: 1, name: "Iron"},
+        {id: 2, name: "Platinum"}
     ],
     
     transientState: {}
@@ -33,6 +36,15 @@ const database = {
 export const setFacility = (facilityId) => {
     database.transientState.selectedFacility = facilityId
     document.dispatchEvent( new CustomEvent("stateChanged") )
+}
+
+//export const setGovernor = (governorId) => {
+ //   database.transientState.selectedGovernor = governorId
+ //   document.dispatchEvent( new CustomEvent("stateChanged"))
+//}
+
+export const getfacilityResources = () => {
+    return database.facilityResources.map(f=>({...f}))
 }
 
 export const getFacilities = () => {
@@ -48,7 +60,7 @@ export const getGovernors = () => {
 }
 
 export const getCart = () => {
-    return database.cart.map(c=>({...c}))
+    return database.transientState.map(c=>({...c}))
 }
 
 export const purchaseMineral = () => {

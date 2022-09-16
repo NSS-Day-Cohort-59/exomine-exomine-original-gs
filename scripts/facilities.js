@@ -23,12 +23,12 @@ document.addEventListener(
                 }
                 for (const resources of facilityResources) {
                     if (matchedFacility.id === facility.facilityId) {
-            return `<li>
-            <input type="radio" name="minerals" value="${mineral.id}"/> ${mineral.name}
+                    return `<li>
+                    <input type="radio" name="minerals" value="${mineral.id}"/> ${mineral.name}
                     </li>`}
+                }
         }
-    }
-    
+    })
 
 export const Facilities = () => {
 
