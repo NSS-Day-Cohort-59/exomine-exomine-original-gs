@@ -11,6 +11,22 @@ const database = {
         { id: 9, colonyId: 1, name: "Yellow Sunshine", active: true },
         { id: 10, colonyId: 2, name: "Purple Rain", active: true }
     ],
+    colonies: [
+        {id: 1, name: "Europa"}
+    ],
+    colonyResources: [
+        {id: 1, mineralId: 1, colonyId: 1, quantity: 10}
+    ],
+    facilities: [
+        {id: 1, name: "Io Facility", active: true}
+    ],
+    facilityResources: [
+        {id: 1, facilityId: 1, mineralId: 1, quantity: 100}
+    ],
+    minerals: [
+        {id: 1, name: "Iron"}
+    ],
+    
     transientState: {}
 }
 
