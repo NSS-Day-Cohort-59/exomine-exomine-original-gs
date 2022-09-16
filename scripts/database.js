@@ -50,7 +50,9 @@ export const getfacilityResources = () => {
 export const getFacilities = () => {
     return database.facilities.map(f => ({...f}))
 }
-
+export const getMinerals = () => {
+    return database.minerals.map(m => ({...m}))
+}
 export const getColonies = () => {
     return database.colonies.map(c=>({...c}))
 }
