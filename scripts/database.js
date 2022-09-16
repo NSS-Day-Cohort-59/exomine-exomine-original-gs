@@ -4,12 +4,20 @@ const database = {
         {id: 1, name: " Glub Shitto", colonyId: 1, active: true}
     ],
     colonies: [
-        {id: 1, name: "Europa", governors: [], resources: []}
+        {id: 1, name: "Europa"}
+    ],
+    colonyResources: [
+        {id: 1, mineralId: 1, colonyId: 1, quantity: 10}
     ],
     facilities: [
-        {id: 1, name: "Io Facility", resources: [], active: true}
+        {id: 1, name: "Io Facility", active: true}
     ],
-    cart: {resources: []}
+    facilityResources: [
+        {id: 1, facilityId: 1, mineralId: 1, quantity: 100}
+    ],
+    minerals: [
+        {id: 1, name: "Iron"}
+    ]
 }
 
 export const setFacility = (facilityId) => {
