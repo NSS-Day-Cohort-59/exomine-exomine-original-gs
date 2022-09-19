@@ -1,6 +1,7 @@
 import { getGovernors } from "./database.js"
 import { renderFacilities } from "./facilities.js"
 import { renderColonies } from "./colonies.js"
+import { render } from "./main.js"
 
 
 const governors = getGovernors()
@@ -13,9 +14,9 @@ document.addEventListener(
             //Displayed colony should change to reflect governor colony.
             renderColonies()
             //Facility dropdown enabled.
-            if (parseInt(event.target.value) > 0 && document.querySelector("#facilitiesDropdown").disabled) {
+            if (parseInt(event.target.value) > 0) {
                 renderFacilities()
-            }
+            } else { render() }
         }
     }
 )
