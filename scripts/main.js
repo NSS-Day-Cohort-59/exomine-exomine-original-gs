@@ -6,7 +6,7 @@ const mainContainer = document.querySelector("#container");
 const applicationHTML = `
 <h1>Exomine</h1>
     <article class="details">
-    <section class="detail--column list details__products">
+    <section class="detail--column list details__facilities">
         <h2>Products</h2>
         ${Facilities()}
     </section>
