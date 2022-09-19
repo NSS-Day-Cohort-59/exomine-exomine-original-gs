@@ -13,7 +13,7 @@ document.addEventListener(
 
             setFacility(parseInt(event.target.value))
 
-            const [,facilityPrimaryKey] = facilityClicked.id
+            const facilityPrimaryKey = facilityClicked.value
             let html = ""
                 let matchedFacility = null
                 for (const facility of facilities) {
@@ -26,7 +26,7 @@ document.addEventListener(
                 for (const resources of FacilityResources) {
                     if (matchedFacility.id === resources.facilityId) {
                         matchedMineralFacility = resources
-                        for (mineral of minerals) {
+                        for (const mineral of minerals) {
                             if (matchedMineralFacility.mineralId === mineral.id) {
                             html += `<li>
                     <input type="radio" name="mineral" value="${mineral.id}"/>${matchedMineralFacility.quantity} tons of ${mineral.name}
