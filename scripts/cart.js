@@ -34,15 +34,15 @@ document.addEventListener(
 
         if (event.target.id === "orderButton") {
 
-    let colonyMineralId = null
-    let facilityMineralId = null
-    if(transientState.length){
-            for (const order of transientState) {
-                const facilityMinerals = facilityResources.find(facilityResource.id === order.facilityId)
-                facilityMineralId = facilityMinerals.id
+            let colonyMineralId = null
+            let facilityMineralId = null
+            if(transientState.length){
+                for (const order of transientState) {
+                    const facilityMinerals = facilityResources.find(facilityResource.id === order.facilityId)
+                    facilityMineralId = facilityMinerals.id
             }
-            for (const order of transientState) {
-                const colonyMinerals = colonyResources.find(colonyResource.id === order.colonyId)
+                for (const order of transientState) {
+                    const colonyMinerals = colonyResources.find(colonyResource.id === order.colonyId)
                     colonyMineralId = colonyMinerals.id
             }
     }
