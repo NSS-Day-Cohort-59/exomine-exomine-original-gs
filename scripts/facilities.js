@@ -2,7 +2,7 @@ import { getFacilities, getMinerals, getfacilityResources } from "./database.js"
 
 const facilities = getFacilities()
 const minerals = getMinerals()
-facilityResources = getfacilityResources()
+const facilityResources = getfacilityResources()
 
 document.addEventListener(
     "change",
@@ -13,24 +13,25 @@ document.addEventListener(
 
             setFacilities(parseInt(event.target.value))
 
-            const [,facilityPrimaryKey] = facilityClicked.id.split("--")
+            const [, facilityPrimaryKey] = facilityClicked.id.split("--")
 
-                let matchedFacility = null
-                for (facility of facilities) {
-                    if (parseInt(facilityPrimaryKey) === facility.id) {
-                        matchedFacility = facility
-                    }
+            let matchedFacility = null
+            for (facility of facilities) {
+                if (parseInt(facilityPrimaryKey) === facility.id) {
+                    matchedFacility = facility
                 }
-                for (const resources of facilityResources) {
-                    if (matchedFacility.id === facility.facilityId) {
-            return `<li>
+            }
+            for (const resources of facilityResources) {
+                if (matchedFacility.id === facility.facilityId) {
+                    return `<li>
             <input type="radio" name="minerals" value="${mineral.id}"/> ${mineral.name}
                     </li>`}
+            }
         }
     }
-    
+)
 
-export const Facilities = () => {
+const Facilities = () => {
 
     let html = `<ul><select id="facility"><option value ="0">Select Facility`
 
@@ -49,3 +50,8 @@ export const Facilities = () => {
     html += `</select></ul>`
     return html
 }
+
+export const renderFacilities = () => {
+    const parentHTML = document.querySelector(".facilities")
+    parentHTML.innerHTML = Facilities()
+} 
