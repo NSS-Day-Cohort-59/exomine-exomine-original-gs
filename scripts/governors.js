@@ -1,31 +1,36 @@
-// import { getGovernors, setGovernor } from "./database.js"
+import { getColonies, getGovernors, setGovernor } from "./database.js"
+import { renderFacilities } from "./facilities.js"
+import { renderColonies } from "./colonies.js"
+import { render } from "./main.js"
 
 // const governors = getGovernors()
 
-// document.addEventListener(
-//     "change",
-//     (event) => {
-//         if (event.target.id === "governor") {
-//             setGovernor(parseInt(event.target.value))
-//         }
-//     }
-// )
+//Event listener for when a governor is selected.
+document.addEventListener(
+    "change",
+    (event) => {
+        if (event.target.id === "governor") {
+            //Displayed colony should change to reflect governor colony.
+            let selectedGovernor = governors.find(governor => governor.id === parseInt(event.target.value))
+            renderColonies(selectedGovernor.colonyId)
+            //Facility dropdown enabled.
+            if (parseInt(event.target.value) > 0 && document.querySelector("#facilitiesDropdown").disabled) {
+                renderFacilities()
+            }
+        }
+    }
+)
 
-// export const Governors = () => {
-//     let html = `<ul><select id="governor"><option value ="0">Select Governor`
+export const Governors = () => {
+    let html = `<select id="governor"><option value ="0">Select Governor</option>`
 
-//     // Use .map() for converting objects to <li> elements
-//     const listItems = governors.map(governor => {
-//         return `<li>
-//             <option value="${governor.id}"/>${governor.name}
-//         </li>`
-//     })
+    // Use .forEach() for converting objects to <li> elements
+    const listItems = governors.forEach(governor => {
+        if (governor.active === true) {
+            html += `<option value="${governor.id}"/>${governor.name}</option>`
+        }
+    })
 
-
-
-//     // Join all of the strings in the array into a single string
-//     html += listItems.join("")
-
-//     html += `</select></ul>`
-//     return html
-// }
+    html += `</select>`
+    return html
+}
