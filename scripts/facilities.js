@@ -14,14 +14,14 @@ document.addEventListener(
             setFacility(parseInt(event.target.value))
 
             const facilityPrimaryKey = facilityClicked.value
-            let html = ""
+            let html = "<ul>"
             let matchedFacility = null
             for (const facility of facilities) {
                 if (parseInt(facilityPrimaryKey) === facility.id) {
                     matchedFacility = facility
                 }
             }
-
+            
             let matchedMineralFacility = null
             for (const resources of FacilityResources) {
                 if (matchedFacility.id === resources.facilityId) {
@@ -35,9 +35,12 @@ document.addEventListener(
                     }
                 }
             }
-            return html
+            html += "</ul>"
+            const parentHTML = document.querySelector(".facility-minerals__display")
+            parentHTML.innerHTML = html;
         }
-    })
+    }
+)
 
 
 const Facilities = () => {
@@ -58,6 +61,8 @@ const Facilities = () => {
     html += `</select></ul>`
     return html
 }
+
+
 
 export const renderFacilities = () => {
     const parentHTML = document.querySelector(".facilities")

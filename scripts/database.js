@@ -102,13 +102,21 @@ export const getCart = () => {
 
 // function where inventory is subtracted from facility resources
 export const substractFacilityMineral = (facilityMineralId) => {
-
+    for (const facilityMineral of database.facilityResources) {
+        if (facilityMineralId === facilityMineral.id) {
+            facilityMineral.quantity--
+        }
+    }
 }
 
 //function where inventory is added to colony resources
 
 export const addColonyMineral = (colonyMineralId) => {
-
+    for (const colonyMineral of database.colonyResources) {
+        if (colonyMineralId === colonyMineral.id) {
+            colonyMineral.quantity++
+        }
+    }
 }
 
 export const purchaseMineral = () => {
