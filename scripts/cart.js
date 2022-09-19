@@ -39,11 +39,11 @@ document.addEventListener(
     if(transientState.length){
             for (const order of transientState) {
                 const facilityMinerals = facilityResources.find(facilityResource.id === order.facilityId)
-                facilityMineralId = facilityMinerals
+                facilityMineralId = facilityMinerals.id
             }
             for (const order of transientState) {
                 const colonyMinerals = colonyResources.find(colonyResource.id === order.colonyId)
-                    colonyMineralId = colonyMinerals
+                    colonyMineralId = colonyMinerals.id
             }
     }
         //call function that adds to colony resources
