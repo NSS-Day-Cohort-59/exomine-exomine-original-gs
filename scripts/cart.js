@@ -1,4 +1,4 @@
-import { getMinerals, getFacilities, getfacilityResources, colonyResources, getTransientState, getColonyResources, addColonyMineral, substractFacilityMineral} from "./database.js"
+import { getMinerals, getFacilities, getfacilityResources, getTransientState, getColonyResources, addColonyMineral, substractFacilityMineral} from "./database.js"
 
 const minerals = getMinerals()
 const facilities = getFacilities()
@@ -24,7 +24,9 @@ if(transientState.length) {
    1 ton of ${mineralChosen.name} from ${facilityChosen.name}
     </div>`
 }
-    return html
+const parentHTML = document.querySelector(".cart__display")
+parentHTML.innerHTML = html;
+return html
     }
         }
 
