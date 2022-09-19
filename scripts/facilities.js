@@ -13,7 +13,7 @@ document.addEventListener(
 
             setFacility(parseInt(event.target.value))
 
-            const facilityPrimaryKey = facilityClicked.id
+            const facilityPrimaryKey = facilityClicked.value
             let html = ""
                 let matchedFacility = null
                 for (const facility of facilities) {
