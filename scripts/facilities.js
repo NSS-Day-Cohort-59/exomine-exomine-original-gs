@@ -21,7 +21,7 @@ document.addEventListener(
                     matchedFacility = facility
                 }
             }
-            
+
             let matchedMineralFacility = null
             for (const resources of FacilityResources) {
                 if (matchedFacility.id === resources.facilityId) {
@@ -45,18 +45,15 @@ document.addEventListener(
 
 const Facilities = () => {
 
-    let html = `<ul><select id="facilitiesDropdown"><option value ="0">Select Facility`
+    let html = `<ul><select id="facility"><option value ="0">Select Facility`
 
-    const listItems = facilities.map(facility => {
-        return `<li>
+    facilities.forEach(facility => {
+        if (facility.active) {
+            html += `<li>
         <option value="${facility.id}"/>${facility.name}
         </li>`
+        }
     })
-
-
-
-    // Join all of the strings in the array into a single string
-    html += listItems.join("")
 
     html += `</select></ul>`
     return html
