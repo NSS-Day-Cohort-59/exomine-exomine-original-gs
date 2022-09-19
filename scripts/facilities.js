@@ -42,7 +42,7 @@ document.addEventListener(
 
 const Facilities = () => {
 
-    let html = `<ul><select id="facility"><option value ="0">Select Facility`
+    let html = `<ul><select id="facilitiesDropdown"><option value ="0">Select Facility`
 
     const listItems = facilities.map(facility => {
         return `<li>
