@@ -3,7 +3,7 @@ import { renderFacilities } from "./facilities.js"
 import { renderColonies } from "./colonies.js"
 import { render } from "./main.js"
 
-const governors = getGovernors()
+// const governors = getGovernors()
 
 //Event listener for when a governor is selected.
 document.addEventListener(

@@ -1,8 +1,8 @@
-import { getFacilities, getMinerals, getfacilityResources } from "./database.js"
+import { getFacilities, setFacility, getMinerals, getfacilityResources } from "./database.js"
 
 const facilities = getFacilities()
 const minerals = getMinerals()
-const facilityResources = getfacilityResources()
+const FacilityResources = getfacilityResources()
 
 document.addEventListener(
     "change",
@@ -11,34 +11,42 @@ document.addEventListener(
 
         if (event.target.id === "facility") {
 
-            setFacilities(parseInt(event.target.value))
+            setFacility(parseInt(event.target.value))
 
-            const [, facilityPrimaryKey] = facilityClicked.id.split("--")
-
+            const facilityPrimaryKey = facilityClicked.value
+            let html = ""
             let matchedFacility = null
-            for (facility of facilities) {
+            for (const facility of facilities) {
                 if (parseInt(facilityPrimaryKey) === facility.id) {
                     matchedFacility = facility
                 }
             }
-            for (const resources of facilityResources) {
-                if (matchedFacility.id === facility.facilityId) {
-                    return `<li>
-            <input type="radio" name="minerals" value="${mineral.id}"/> ${mineral.name}
-                    </li>`}
+
+            let matchedMineralFacility = null
+            for (const resources of FacilityResources) {
+                if (matchedFacility.id === resources.facilityId) {
+                    matchedMineralFacility = resources
+                    for (const mineral of minerals) {
+                        if (matchedMineralFacility.mineralId === mineral.id) {
+                            html += `<li>
+                    <input type="radio" name="mineral" value="${mineral.id}"/>${matchedMineralFacility.quantity} tons of ${mineral.name}
+                            </li>`
+                        }
+                    }
+                }
             }
+            return html
         }
-    }
-)
+    })
+
 
 const Facilities = () => {
 
     let html = `<ul><select id="facility"><option value ="0">Select Facility`
 
-    // Use .map() for converting objects to <li> elements
     const listItems = facilities.map(facility => {
         return `<li>
-            <option value="${facility.id}"/>${facility.name}
+        <option value="${facility.id}"/>${facility.name}
         </li>`
     })
 
