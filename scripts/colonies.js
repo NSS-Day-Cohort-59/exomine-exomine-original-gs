@@ -30,3 +30,7 @@ const Colonies = () => {
     return html
 }
 
+export const renderColonies = () => {
+    const parentElement = document.querySelector(".colonies")
+    parentElement.innerHTML = Colonies()
+}

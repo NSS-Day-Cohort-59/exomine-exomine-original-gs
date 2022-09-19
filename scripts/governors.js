@@ -1,9 +1,9 @@
-import { getColonies, getGovernors, setGovernor } from "./database.js"
+import { getGovernors } from "./database.js"
 import { renderFacilities } from "./facilities.js"
-//import { renderColonies } from "./colonies.js"
-import { render } from "./main.js"
+import { renderColonies } from "./colonies.js"
 
- const governors = getGovernors()
+
+const governors = getGovernors()
 
 //Event listener for when a governor is selected.
 document.addEventListener(
@@ -11,8 +11,7 @@ document.addEventListener(
     (event) => {
         if (event.target.id === "governor") {
             //Displayed colony should change to reflect governor colony.
-            let selectedGovernor = governors.find(governor => governor.id === parseInt(event.target.value))
-            renderColonies(selectedGovernor.colonyId)
+            renderColonies()
             //Facility dropdown enabled.
             if (parseInt(event.target.value) > 0 && document.querySelector("#facilitiesDropdown").disabled) {
                 renderFacilities()
