@@ -58,13 +58,17 @@ export const setFacility = (facilityId) => {
     document.dispatchEvent( new CustomEvent("stateChanged") )
 }
 
-//export const setGovernor = (governorId) => {
- //   database.transientState.selectedGovernor = governorId
- //   document.dispatchEvent( new CustomEvent("stateChanged"))
-//}
+export const setGovernor = (governorId) => {
+    database.transientState.selectedGovernor = governorId
+    document.dispatchEvent( new CustomEvent("stateChanged"))
+}
 
 export const getfacilityResources = () => {
     return database.facilityResources.map(f=>({...f}))
+}
+
+export const getColonyResources = () => {
+    return database.colonyResources.map(c => ({...c}))
 }
 
 export const getFacilities = () => {
