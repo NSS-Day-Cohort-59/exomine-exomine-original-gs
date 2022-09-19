@@ -9,7 +9,7 @@ document.addEventListener(
     (event) => {
         const facilityClicked = event.target
 
-        if (event.target.name === "facility") {
+        if (event.target.id === "facility") {
 
             setFacility(parseInt(event.target.value))
 
@@ -42,11 +42,11 @@ document.addEventListener(
 
 export const Facilities = () => {
 
-    let html = `<ul><select name="facility"><option id ="0">Select Facility`
+    let html = `<ul><select id="facility"><option value ="0">Select Facility`
 
     const listItems = facilities.map(facility => {
         return `<li>
-        <option id="${facility.id}"/>${facility.name}
+        <option value="${facility.id}"/>${facility.name}
         </li>`
     })
 
