@@ -50,7 +50,9 @@ const database = {
 
     ],
     
-    transientState: {}
+    transientState: {
+        //Needs to store selected facilityIds and mineralIds
+    }
 }
 
 export const setFacility = (facilityId) => {
@@ -60,6 +62,11 @@ export const setFacility = (facilityId) => {
 
 export const setGovernor = (governorId) => {
     database.transientState.selectedGovernor = governorId
+    document.dispatchEvent( new CustomEvent("stateChanged"))
+}
+
+export const setMineral = (mineralId) => {
+    database.transientState.selectedMineral = mineralId
     document.dispatchEvent( new CustomEvent("stateChanged"))
 }
 
@@ -85,13 +92,28 @@ export const getGovernors = () => {
     return database.governors.map(g=>({...g}))
 }
 
+export const getTransientState = () => {
+    return {...database.transientState}
+}
+
 export const getCart = () => {
     return database.transientState.map(c=>({...c}))
 }
 
+// function where inventory is subtracted from facility resources
+export const substractFacilityMineral = (facilityMineralId) => {
+
+}
+
+//function where inventory is added to colony resources
+
+export const addColonyMineral = (colonyMineralId) => {
+
+}
+
 export const purchaseMineral = () => {
 
-        // Broadcast custom event to entire documement so that the
+        // Broadcast custom event to entire document so that the
         // application can re-render and update state
         document.dispatchEvent( new CustomEvent("stateChanged") ) ;{
     }
