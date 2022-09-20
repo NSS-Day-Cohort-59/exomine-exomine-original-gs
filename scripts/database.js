@@ -140,10 +140,10 @@ export const substractFacilityMineral = (facilityMineralId) => {
 
 //function where inventory is added to colony resources
 
-export const addColonyMineral = (colonyMineralId) => {
+export const addColonyMineral = (colonyMineralId, quantityGiven) => {
     for (const colonyMineral of database.colonyResources) {
         if (colonyMineralId === colonyMineral.id) {
-            colonyMineral.quantity++
+            colonyMineral.quantity += quantityGiven
         }
     }
 }
