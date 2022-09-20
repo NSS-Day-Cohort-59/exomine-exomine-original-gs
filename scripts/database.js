@@ -1,4 +1,4 @@
-const database = {
+export const database = {
     governors: [
         { id: 1, colonyId: 2, name: "Silver Stallion", active: true },
         { id: 2, colonyId: 1, name: "Blue Dolphin", active: true },
@@ -51,6 +51,7 @@ const database = {
     ],
     
     transientState: {
+
         //Needs to store selected facilityIds and mineralIds
     }
 }
@@ -67,6 +68,11 @@ export const setGovernor = (governorId) => {
 
 export const setMineral = (mineralId) => {
     database.transientState.selectedMineral = mineralId
+    document.dispatchEvent( new CustomEvent("stateChanged"))
+}
+
+export const setColony = (colonyId) => {
+    database.transientState.selectedColony = colonyId
     document.dispatchEvent( new CustomEvent("stateChanged"))
 }
 
@@ -93,7 +99,7 @@ export const getGovernors = () => {
 }
 
 export const getTransientState = () => {
-    return {...database.transientState}
+    return database.transientState
 }
 
 export const getCart = () => {

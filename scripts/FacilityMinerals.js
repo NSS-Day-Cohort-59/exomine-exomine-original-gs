@@ -1,22 +1,28 @@
-import { getMinerals, getFacilities, getTransientState, setMineral} from "./database.js"
+import { getColonies, getFacilities, getTransientState, setMineral } from "./database.js"
+import { renderCart } from "./cart.js"
 
-const minerals = getMinerals()
-const facilities = getFacilities()
+const facilityResources = getFacilities()
+const colonyResources = getColonies()
 const transientState = getTransientState()
 
-const selectedFacility = transientState.selectedFacility
-const selectedMineral = transientState.selectedMineral
 
-document.addEventListener(
-    "change",
-    (event) => {
-        const mineralClicked = event.target
+// document.addEventListener(
+//     "click",
+//     (event) => {
 
-        if (event.target.id === "mineral") {
-            setMineral(parseInt(event.target.value))
+//         if (event.target.name === "mineral") {
+//             setMineral(parseInt(event.target.value))
+//             let facilityMineralId = null
+//             let colonyMineralId = null
 
-            //add 1 ton of mineral selected to cart
+//             const facilityMinerals = facilityResources.find(facilityResource => facilityResource.facilityId === transientState.selectedFacility)
+//             facilityMineralId = facilityMinerals.id
 
-        }
-    }
-)
+//             const colonyMinerals = colonyResources.find(colonyResource => colonyResource.id === transientState.selectedColony)
+//             colonyMineralId = colonyMinerals.id
+//         //call function that adds to colony resources
+//         //call function that subtracts 1 ton from facilityResources
+//         renderCart()
+//     }
+//     }
+// )

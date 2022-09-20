@@ -1,4 +1,4 @@
-import { getMinerals, getFacilities, getfacilityResources, getTransientState, getColonyResources, addColonyMineral, substractFacilityMineral} from "./database.js"
+import { getMinerals, getFacilities, getfacilityResources, getTransientState, getColonyResources, addColonyMineral, substractFacilityMineral, setMineral } from "./database.js"
 
 const minerals = getMinerals()
 const facilities = getFacilities()
@@ -8,50 +8,64 @@ const colonyResources = getColonyResources()
 const transientState = getTransientState()
 
 export const Cart = () => {
-// creates the HTML in the cart
+    // creates the HTML in the cart
 
-let html = ""
+    let html = ""
 
-if(transientState.length) {
-    for (const order of transientState) {
+    if (transientState.selectedFacility) {
 
-    const facilityChosen = facilities.find(facility.id === order.facilityId)
+        const facilityChosen = facilities.find(facility => facility.id === transientState.selectedFacility)
 
-    const mineralChosen = minerals.find(mineral.id === order.facilityId)
+        const mineralChosen = minerals.find(mineral => mineral.id === transientState.selectedMineral)
 
 
-    html += `<div class="cartContents">
-   1 ton of ${mineralChosen.name} from ${facilityChosen.name}
+        html += `<div class="cartContents">
+   1 ton of ${mineralChosen?.name} from ${facilityChosen?.name}
     </div>`
-}
-const parentHTML = document.querySelector(".cart__display")
-parentHTML.innerHTML = html;
-return html
     }
-        }
+    return html;
+}
+
+export const renderCart = () => {
+    const parentHTML = document.querySelector(".cart__display")
+    parentHTML.innerHTML = Cart()
+}
 
 document.addEventListener(
-    "change",
+    "click",
     (event) => {
 
-        if (event.target.id === "orderButton") {
-
-            let colonyMineralId = null
+        if (event.target.name === "mineral") {
+            setMineral(parseInt(event.target.value))
             let facilityMineralId = null
-            if(transientState.length){
-                for (const order of transientState) {
-                    const facilityMinerals = facilityResources.find(facilityResource.id === order.facilityId)
-                    facilityMineralId = facilityMinerals.id
-            }
-                for (const order of transientState) {
-                    const colonyMinerals = colonyResources.find(colonyResource.id === order.colonyId)
-                    colonyMineralId = colonyMinerals.id
-            }
-    }
+            let colonyMineralId = null
+
+            const facilityMinerals = facilityResources.find(facilityResource => facilityResource.facilityId === transientState.selectedFacility)
+            facilityMineralId = facilityMinerals.id
+
+            const colonyMinerals = colonyResources.find(colonyResource => colonyResource.id === transientState.selectedColony)
+            colonyMineralId = colonyMinerals.id
         //call function that adds to colony resources
         //call function that subtracts 1 ton from facilityResources
-    addColonyMineral(colonyMineralId)
-    substractFacilityMineral(facilityMineralId)
+        renderCart()
+    }
+    }
+)
+
+document.addEventListener(
+    "click",
+    (event) => {
+        if (event.target.id === "orderButton") {
+        let facilityMineralId = null
+        let colonyMineralId = null
+
+        const facilityMinerals = facilityResources.find(facilityResource => facilityResource.facilityId === transientState.selectedFacility)
+            facilityMineralId = facilityMinerals.id
+
+        const colonyMinerals = colonyResources.find(colonyResource => colonyResource.id === transientState.selectedColony)
+            colonyMineralId = colonyMinerals.id
+        addColonyMineral(colonyMineralId)
+        substractFacilityMineral(facilityMineralId)
         }
-    }    
+    }
 )

@@ -1,4 +1,4 @@
-import { getFacilities, setFacility, getMinerals, getfacilityResources } from "./database.js"
+import { getFacilities, setFacility, setMineral, getMinerals, getfacilityResources, database } from "./database.js"
 
 const facilities = getFacilities()
 const minerals = getMinerals()
@@ -43,9 +43,10 @@ document.addEventListener(
 )
 
 
+
 const Facilities = () => {
 
-    let html = `<ul><select id="facilitiesDropdown"><option value ="0">Select Facility`
+    let html = `<ul><select id="facility"><option value ="0">Select Facility`
 
     const listItems = facilities.map(facility => {
         return `<li>
