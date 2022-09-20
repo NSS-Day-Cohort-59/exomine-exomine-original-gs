@@ -69,7 +69,7 @@ document.addEventListener(
 
         const colonyMinerals = colonyResources.find(colonyResource => colonyResource.id === transientState.selectedColony)
             colonyMineralId = colonyMinerals.id
-        addColonyMineral(colonyMineralId, quantity)
+        addColonyMineral(colonyMineralId, transientState.quantity)
         substractFacilityMineral(facilityMineralId)
 
         }
