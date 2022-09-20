@@ -19,9 +19,25 @@ export const database = {
     colonyResources: [
         { id: 1, mineralId: 1, colonyId: 1, quantity: 10 },
         { id: 2, mineralId: 2, colonyId: 1, quantity: 20 },
-        { id: 3, mineralId: 1, colonyId: 2, quantity: 25 },
-        { id: 4, mineralId: 2, colonyId: 3, quantity: 45 },
-        { id: 5, mineralId: 1, colonyId: 2, quantity: 15 }
+        { id: 3, mineralId: 3, colonyId: 1, quantity: 25 },
+        { id: 4, mineralId: 4, colonyId: 1, quantity: 45 },
+        { id: 5, mineralId: 5, colonyId: 1, quantity: 15 },
+        { id: 6, mineralId: 6, colonyId: 1, quantity: 0 },
+        { id: 7, mineralId: 7, colonyId: 1, quantity: 0 },
+        { id: 8, mineralId: 1, colonyId: 2, quantity: 2 },
+        { id: 9, mineralId: 2, colonyId: 2, quantity: 5 },
+        { id: 10, mineralId: 3, colonyId: 2, quantity: 0 },
+        { id: 11, mineralId: 4, colonyId: 2, quantity: 7 },
+        { id: 12, mineralId: 5, colonyId: 2, quantity: 3 },
+        { id: 13, mineralId: 6, colonyId: 2, quantity: 0 },
+        { id: 14, mineralId: 7, colonyId: 2, quantity: 0 },
+        { id: 15, mineralId: 1, colonyId: 3, quantity: 1 },
+        { id: 16, mineralId: 2, colonyId: 3, quantity: 2 },
+        { id: 17, mineralId: 3, colonyId: 3, quantity: 0 },
+        { id: 18, mineralId: 4, colonyId: 3, quantity: 2 },
+        { id: 19, mineralId: 5, colonyId: 3, quantity: 8 },
+        { id: 20, mineralId: 6, colonyId: 3, quantity: 0 },
+        { id: 21, mineralId: 7, colonyId: 3, quantity: 5 }
     ],
     facilities: [
         { id: 1, name: "Io Facility", active: true },
@@ -75,7 +91,7 @@ export const setMineral = (mineralId) => {
 
 export const setColony = (colonyId) => {
     database.transientState.selectedColony = colonyId
-    document.dispatchEvent( new CustomEvent("stateChanged"))
+    document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
 export const setQuantity = (quantity) => {
