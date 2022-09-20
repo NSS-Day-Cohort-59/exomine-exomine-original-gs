@@ -1,13 +1,14 @@
 import { getColonies, getColonyResources, getMinerals, getGovernors, setColony } from "./database.js";
 
-const colonies = getColonies()
-const governors = getGovernors()
-const colonyResources = getColonyResources()
-const minerals = getMinerals()
+
 
 const Colonies = () => {
     //Creates colony display in html based on selected governor.
     //Assign the selected governor element to a variable.
+    const colonyResources = getColonyResources()
+    const colonies = getColonies()
+    const governors = getGovernors()
+    const minerals = getMinerals()
     let selectedGovernor = document.querySelector("#governor")
     if (parseInt(selectedGovernor.value) > 0) {
         //Find the matching governor object in database and assign to a variable.
