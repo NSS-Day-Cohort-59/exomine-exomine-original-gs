@@ -67,10 +67,9 @@ export const database = {
     ],
 
     transientState: {
-
-        Cart: []
         //Needs to store selected facilityIds and mineralIds
-    }
+    },
+    Cart: []
     
 }
 

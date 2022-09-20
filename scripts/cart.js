@@ -28,7 +28,7 @@ export const Cart = () => {
 }
 
 export const renderCart = () => {
-    const parentHTML = document.querySelector(".cart__display")
+    const parentHTML = document.querySelector(".cart")
     parentHTML.innerHTML = Cart()
 }
 
