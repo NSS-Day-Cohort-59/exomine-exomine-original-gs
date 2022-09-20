@@ -130,22 +130,20 @@ export const getCart = () => {
 }
 
 // function where inventory is subtracted from facility resources
-export const substractFacilityMineral = (facilityMineralId) => {
-    for (const facilityMineral of database.facilityResources) {
-        if (facilityMineralId === facilityMineral.id) {
-            facilityMineral.quantity--
-        }
-    }
+
+export const substractFacilityMineral = (facilityResourceId) => {
+    const facilityResourceObj = database.facilityResources.find(facilityResource => facilityResource.id === facilityResourceId)
+    facilityResourceObj.quantity--;
 }
 
 //function where inventory is added to colony resources
-
-export const addColonyMineral = (colonyMineralId, quantityGiven) => {
-    for (const colonyMineral of database.colonyResources) {
-        if (colonyMineralId === colonyMineral.id) {
-            colonyMineral.quantity += quantityGiven
-        }
-    }
+// Takes in ID of colony resource obj
+// use .find on colonyResources to find matching primary key
+// access quantity property on this object
+// increment the quantity property
+export const addColonyMineral = (colonyResourceId) => {
+    const colonyResourceObj = database.colonyResources.find(colonyResource => colonyResource.id === colonyResourceId)
+    colonyResourceObj.quantity++;
 }
 
 export const purchaseMineral = () => {

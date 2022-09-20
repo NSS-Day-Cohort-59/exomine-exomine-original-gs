@@ -39,11 +39,7 @@ document.addEventListener(
 
         if (event.target.name === "mineral") {
             setMineral(parseInt(event.target.value))
-            if (transientState.quantity) {
-                transientState.quantity++
-            } else {
-                setQuantity(1)
-                    }
+            setQuantity(1)
             let facilityMineralId = null
             let colonyMineralId = null
 
@@ -65,14 +61,27 @@ document.addEventListener(
         let facilityMineralId = null
         let colonyMineralId = null
 
-        const facilityMinerals = facilityResources.find(facilityResource => facilityResource.facilityId === transientState.selectedFacility)
-            facilityMineralId = facilityMinerals.id
-
-        const colonyMinerals = colonyResources.find(colonyResource => colonyResource.id === transientState.selectedColony)
-            colonyMineralId = colonyMinerals.id
-        addColonyMineral(colonyMineralId, transientState.quantity)
-        substractFacilityMineral(facilityMineralId)
-
+        const foundColonyResource = colonyResources.find(colonyResource => (colonyResource.colonyId === transientState.selectedColony && colonyResource.mineralId === transientState.selectedMineral))
+        addColonyMineral(foundColonyResource.id)
+        renderColonies();
+        const foundFacilityResource = facilityResources.find(facilityResource => (facilityResource.facilityId === transientState.selectedFacility && facilityResource.mineralId === transientState.selectedMineral))
+        substractFacilityMineral(foundFacilityResource.id)
+        renderFacilities();
+        renderCart();
         }
     }
 )
+
+
+// User clicks order button
+// When click we have all id's in transient state
+// When click add one ton of particular mineral to colony
+    // match up the colonyID and mineralId to link to the correct colonyResource object 
+    // Add one ton to the quantity property of the colonyResource obj
+// subtract one ton of particular mineral from facility
+    // match facilityId and mineralId to link to correct facilityResources object
+    // subtract one ton from the quantity property of the facilityResources obj
+// empty out cart display
+
+
+
