@@ -53,7 +53,9 @@ export const database = {
     transientState: {
 
         //Needs to store selected facilityIds and mineralIds
-    }
+    },
+    
+    Cart: []
 }
 
 export const setFacility = (facilityId) => {
@@ -73,6 +75,11 @@ export const setMineral = (mineralId) => {
 
 export const setColony = (colonyId) => {
     database.transientState.selectedColony = colonyId
+    document.dispatchEvent( new CustomEvent("stateChanged"))
+}
+
+export const setQuantity = (quantity) => {
+    database.transientState.quantity = quantity
     document.dispatchEvent( new CustomEvent("stateChanged"))
 }
 

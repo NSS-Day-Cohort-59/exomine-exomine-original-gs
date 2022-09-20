@@ -1,4 +1,6 @@
-import { getMinerals, getFacilities, getfacilityResources, getTransientState, getColonyResources, addColonyMineral, substractFacilityMineral, setMineral } from "./database.js"
+import { getMinerals, getFacilities, getfacilityResources, getTransientState, getColonyResources, addColonyMineral, substractFacilityMineral, setMineral, setQuantity } from "./database.js"
+import { renderColonies } from "./colonies.js"
+import { renderFacilities } from "./facilities.js"
 
 const minerals = getMinerals()
 const facilities = getFacilities()
@@ -20,7 +22,7 @@ export const Cart = () => {
 
 
         html += `<div class="cartContents">
-   1 ton of ${mineralChosen?.name} from ${facilityChosen?.name}
+   ${transientState.quantity} ton of ${mineralChosen?.name} from ${facilityChosen?.name}
     </div>`
     }
     return html;
@@ -37,6 +39,11 @@ document.addEventListener(
 
         if (event.target.name === "mineral") {
             setMineral(parseInt(event.target.value))
+            if (transientState.quantity) {
+                transientState.quantity++
+            } else {
+                setQuantity(1)
+                    }
             let facilityMineralId = null
             let colonyMineralId = null
 
@@ -45,8 +52,7 @@ document.addEventListener(
 
             const colonyMinerals = colonyResources.find(colonyResource => colonyResource.id === transientState.selectedColony)
             colonyMineralId = colonyMinerals.id
-        //call function that adds to colony resources
-        //call function that subtracts 1 ton from facilityResources
+
         renderCart()
     }
     }
@@ -64,8 +70,9 @@ document.addEventListener(
 
         const colonyMinerals = colonyResources.find(colonyResource => colonyResource.id === transientState.selectedColony)
             colonyMineralId = colonyMinerals.id
-        addColonyMineral(colonyMineralId)
+        addColonyMineral(colonyMineralId, quantity)
         substractFacilityMineral(facilityMineralId)
+
         }
     }
 )
