@@ -22,7 +22,7 @@ export const Cart = () => {
 
 
         html += `<div class="cartContents">
-   ${transientState.quantity} ton of ${mineralChosen?.name} from ${facilityChosen?.name}
+   ${transientState.quantity} tons of ${mineralChosen?.name} from ${facilityChosen?.name}
     </div>`
     }
     return html;
