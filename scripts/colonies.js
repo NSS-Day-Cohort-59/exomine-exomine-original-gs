@@ -1,4 +1,4 @@
-import { getColonies, getColonyResources, getMinerals, getGovernors } from "./database.js";
+import { getColonies, getColonyResources, getMinerals, getGovernors, setColony } from "./database.js";
 
 const colonies = getColonies()
 const governors = getGovernors()
@@ -14,6 +14,8 @@ const Colonies = () => {
         let foundGovernor = governors.find(governor => governor.id === parseInt(selectedGovernor.value))
         //Match the governor to a colony.
         let matchingColony = colonies.find(colony => colony.id === foundGovernor.colonyId)
+        //Set ColonyId in transient state
+        setColony(matchingColony.id)
         //Create HTML for colony name
         let html = `<h2>${matchingColony.name} Minerals</h2>`
         //Iterate through colony resources and for each 

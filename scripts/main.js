@@ -1,5 +1,6 @@
 import { Governors } from "./governors.js"
 import { renderFacilities } from "./facilities.js"
+import { renderCart } from "./cart.js"
 
 const mainContainer = document.querySelector("#container");
 
@@ -26,8 +27,8 @@ ${Governors()}
 <section class="cart">
     <h2>Space Cart</h2>
     <div class="cart__display">
-    <button id="orderButton">Purchase Mineral</button>
     </div>
+    <button id="orderButton">Purchase Mineral</button>
 </section>
 
 `

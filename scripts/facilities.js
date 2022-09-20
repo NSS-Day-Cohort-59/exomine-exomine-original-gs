@@ -1,4 +1,4 @@
-import { getFacilities, setFacility, getMinerals, getfacilityResources } from "./database.js"
+import { getFacilities, setFacility, setMineral, getMinerals, getfacilityResources, database } from "./database.js"
 
 const facilities = getFacilities()
 const minerals = getMinerals()
@@ -41,6 +41,7 @@ document.addEventListener(
         }
     }
 )
+
 
 
 const Facilities = () => {
