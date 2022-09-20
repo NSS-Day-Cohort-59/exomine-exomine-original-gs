@@ -10,26 +10,24 @@ const applicationHTML = `
 </header>
 
 <div>
-<div><section class="governors">
 Select a Governor... ${Governors()}
-</section>
 
-<section class="facilities">Select a Facility...
-    <select name="facilities" id="facilitiesDropdown" disabled> <option value="0">Select a facility</option> </select>
+<center><section class="colonies"><h3>Colony Minerals</h3></section></center>
+
+Select a Facility...
+<section class="facilities"><select name="facilities" id="facilitiesDropdown" disabled> <option value="0">Select a facility</option> </select>
 </section></div>
 
-<center><section class="colonies"></section></center></div>
-
-<section class="facility-minerals">
-<h2>Facility Minerals</h2>
-<div class="facility-minerals__display">
+<div><section class="bottom"><section class="facility-minerals">
+<center><h3>Facility Minerals</h3></center>
+<center><div class="facility-minerals__display"></center>
 </section>
 
 
 <div class="cart__display"><h3>Space Cart</h3>
 <center><section class="cart"></section></center>
-    <center><button class="button-85" role="button" button id="orderButton">Purchase Mineral</button></center></div>
-
+    <center><button class="button-1" role="button" button id="orderButton">Purchase Minerals</button></center></div></div>
+</section>
 `
 
 export const render = () => {

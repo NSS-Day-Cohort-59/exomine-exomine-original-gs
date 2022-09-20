@@ -3,6 +3,11 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     justify-content: center;
 }
+
+ul {
+    list-style: none;
+  }
+
 select {
     appearance: none;
     outline: 0;
@@ -63,8 +68,8 @@ h3 {
     background-color: #ccafff;
     margin: 10px 10px 20px 10px;
     display: block;
-    margin-left: 50%;
-    padding-bottom: 5px;
+    margin-left: 57%;
+    padding-bottom: 15px;
     
 }
 
@@ -80,16 +85,25 @@ h3 {
 }
 
 .cart {
-    padding-bottom: 2%;
+    padding-bottom: 4%;
 }
 
 .facility-minerals {
-    
+    border: 2px solid rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    width: 30%;
+    background-color: #ccafff;
+    margin: 10px 10px 20px 10px;
+    display: block;
 
 }
 
+.facility-minerals__display {
+padding-right: 12%;
+}
 
-.button-85 {
+
+.button-1 {
   padding: 0.6em 2em;
   border: none;
   outline: none;
@@ -104,7 +118,7 @@ h3 {
   touch-action: manipulation;
 }
 
-.button-85:before {
+.button-1:before {
   content: "";
   background: linear-gradient(
     45deg,
@@ -144,7 +158,7 @@ h3 {
   }
 }
 
-.button-85:after {
+.button-1:after {
   z-index: -1;
   content: "";
   position: absolute;
