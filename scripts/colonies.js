@@ -18,7 +18,7 @@ const Colonies = () => {
         //Set ColonyId in transient state
         setColony(matchingColony.id)
         //Create HTML for colony name
-        let html = `<h2>${matchingColony.name} Minerals</h2>`
+        let html = `<h3>${matchingColony.name} Minerals</h3>`
         //Iterate through colony resources and for each 
         // matching with a quantity above 0 match to mineral name in minerals array
         // and add html name and quantity.

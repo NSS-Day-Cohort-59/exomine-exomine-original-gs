@@ -9,28 +9,25 @@ const applicationHTML = `
     <h1>Solar System Mining Marketplace</h1>
 </header>
 
-<section class="governors">
-${Governors()}
+<div>
+Select a Governor... ${Governors()}
+
+<center><section class="colonies"><h3>Colony Minerals</h3></section></center>
+
+Select a Facility...
+<section class="facilities"><select name="facilities" id="facilitiesDropdown" disabled> <option value="0">Select a facility</option> </select>
+</section></div>
+
+<div><section class="bottom"><section class="facility-minerals">
+<center><h3>Facility Minerals</h3></center>
+<center><div class="facility-minerals__display"></center>
 </section>
 
-<section class="colonies"></section>
 
-<section class="facilities">
-    <select name="facilities" id="facilitiesDropdown" disabled> <option value="0">Select a facility</option> </select>
+<div class="cart__display"><h3>Space Cart</h3>
+<center><section class="cart"></section></center>
+    <center><button class="button-1" role="button" button id="orderButton">Purchase Minerals</button></center></div></div>
 </section>
-
-<section class="facility-minerals">
-<h2>Facility Minerals</h2>
-<div class="facility-minerals__display"></div>
-</section>
-
-<section class="cart">
-    <h2>Space Cart</h2>
-    <div class="cart__display">
-    </div>
-    <button id="orderButton">Purchase Mineral</button>
-</section>
-
 `
 
 export const render = () => {

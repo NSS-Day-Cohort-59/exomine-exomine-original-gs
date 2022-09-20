@@ -1,6 +1,5 @@
 import { getMinerals, getFacilities, getfacilityResources, getTransientState, getColonyResources, addColonyMineral, substractFacilityMineral, setMineral, setQuantity } from "./database.js"
-import { renderColonies } from "./colonies.js"
-import { renderFacilities } from "./facilities.js"
+
 
 const minerals = getMinerals()
 const facilities = getFacilities()
@@ -29,7 +28,7 @@ export const Cart = () => {
 }
 
 export const renderCart = () => {
-    const parentHTML = document.querySelector(".cart__display")
+    const parentHTML = document.querySelector(".cart")
     parentHTML.innerHTML = Cart()
 }
 
