@@ -1,4 +1,5 @@
 import { getMinerals, getFacilities, getfacilityResources, getTransientState, getColonyResources, addColonyMineral, substractFacilityMineral, setMineral, setQuantity } from "./database.js"
+import { renderColonies } from "./colonies.js"
 
 
 const minerals = getMinerals()
