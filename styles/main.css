@@ -1,3 +1,9 @@
+table {
+    height: 600px;
+    width: 1000px;
+    padding-bottom: 40%;
+}
+
 body {
     background-color: #f5eafd;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -12,9 +18,9 @@ select {
     appearance: none;
     outline: 0;
     display: flex;
-    background: rgb(243, 248, 253);
+    background: rgb(243, 249, 255);
     background-image: none;
-    width: 15%;
+    width: 50%;
     color: black;
     cursor: pointer;
     border: 1px solid black;
@@ -64,11 +70,10 @@ h3 {
 .cart__display {
     border: 2px solid rgb(255, 255, 255);
     color: rgb(0, 0, 0);
-    width: 35%;
     background-color: #ccafff;
     margin: 10px 10px 20px 10px;
     display: block;
-    margin-left: 57%;
+    margin-left: 25%;
     padding-bottom: 15px;
     
 }
@@ -76,11 +81,10 @@ h3 {
 .colonies {
     border: 2px solid rgb(255, 255, 255);
     color: rgb(0, 0, 0);
-    width: 35%;
     background-color: #ccafff;
     margin: 10px 10px 20px 10px;
     display: block;
-    margin-left: 50%;
+    margin-left: 25%;
     
 }
 
@@ -91,7 +95,6 @@ h3 {
 .facility-minerals {
     border: 2px solid rgb(255, 255, 255);
     color: rgb(0, 0, 0);
-    width: 30%;
     background-color: #ccafff;
     margin: 10px 10px 20px 10px;
     display: block;

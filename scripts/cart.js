@@ -58,8 +58,6 @@ document.addEventListener(
     "click",
     (event) => {
         if (event.target.id === "orderButton") {
-        let facilityMineralId = null
-        let colonyMineralId = null
 
         const foundColonyResource = colonyResources.find(colonyResource => (colonyResource.colonyId === transientState.selectedColony && colonyResource.mineralId === transientState.selectedMineral))
         addColonyMineral(foundColonyResource.id)
