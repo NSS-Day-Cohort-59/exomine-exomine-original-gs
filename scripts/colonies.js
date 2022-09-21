@@ -1,7 +1,6 @@
 import { getColonies, getColonyResources, getMinerals, getGovernors, setColony } from "./database.js";
 
 
-
 const Colonies = () => {
     //Creates colony display in html based on selected governor.
     //Assign the selected governor element to a variable.
