@@ -4,11 +4,8 @@ const facilities = getFacilities()
 const minerals = getMinerals()
 const FacilityResources = getfacilityResources()
 
-document.addEventListener(
-    "change",
-    (event) => {
-        const facilityClicked = event.target
 
+<<<<<<< HEAD
         if (event.target.id === "facility") {
 
             setFacility(parseInt(event.target.value))
@@ -41,6 +38,8 @@ document.addEventListener(
         }
     }
 )
+=======
+>>>>>>> main
 
 
 

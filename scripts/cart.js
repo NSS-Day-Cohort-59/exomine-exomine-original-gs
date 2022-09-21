@@ -1,5 +1,7 @@
 import { getMinerals, getFacilities, getfacilityResources, getTransientState, getColonyResources, addColonyMineral, substractFacilityMineral, setMineral, setQuantity } from "./database.js"
+import { renderFacilityMinerals } from "./FacilityMinerals.js"
 import { renderColonies } from "./colonies.js"
+import { renderFacilities } from "./facilities.js"
 
 
 const minerals = getMinerals()
@@ -66,7 +68,8 @@ document.addEventListener(
         renderColonies();
         const foundFacilityResource = facilityResources.find(facilityResource => (facilityResource.facilityId === transientState.selectedFacility && facilityResource.mineralId === transientState.selectedMineral))
         substractFacilityMineral(foundFacilityResource.id)
-        renderFacilities();
+        //renderFacilities();
+        renderFacilityMinerals();
         renderCart();
         }
     }
