@@ -10,13 +10,13 @@ const facilityResources = getfacilityResources()
 const colonyResources = getColonyResources()
 //make variables that contain the facility and mineral selected from facilities module
 const transientState = getTransientState()
-
+let purchaseJustMade = false;
 export const Cart = () => {
     // creates the HTML in the cart
 
     let html = ""
 
-    if (transientState.selectedFacility) {
+    if (transientState.selectedFacility && !purchaseJustMade) {
 
         const facilityChosen = facilities.find(facility => facility.id === transientState.selectedFacility)
 
@@ -26,6 +26,11 @@ export const Cart = () => {
         html += `<div class="cartContents">
    ${transientState.quantity} tons of ${mineralChosen?.name} from ${facilityChosen?.name}
     </div>`
+    }
+    else {
+        html += `<div class="cartContents">
+    </div>`
+    purchaseJustMade = false;
     }
     return html;
 }
@@ -45,11 +50,7 @@ document.addEventListener(
             let facilityMineralId = null
             let colonyMineralId = null
 
-            const facilityMinerals = facilityResources.find(facilityResource => facilityResource.facilityId === transientState.selectedFacility)
-            facilityMineralId = facilityMinerals.id
-
-            const colonyMinerals = colonyResources.find(colonyResource => colonyResource.id === transientState.selectedColony)
-            colonyMineralId = colonyMinerals.id
+            
 
         renderCart()
     }
@@ -69,6 +70,8 @@ document.addEventListener(
         const foundFacilityResource = facilityResources.find(facilityResource => (facilityResource.facilityId === transientState.selectedFacility && facilityResource.mineralId === transientState.selectedMineral))
         substractFacilityMineral(foundFacilityResource.id)
         //renderFacilities();
+        transientState.quantity = 0;
+        purchaseJustMade = true;
         renderFacilityMinerals();
         renderCart();
         }
