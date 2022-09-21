@@ -61,12 +61,16 @@ document.addEventListener(
     "click",
     (event) => {
         if (event.target.id === "orderButton") {
+        let facilityMineralId = null
+        let colonyMineralId = null
 
         const foundColonyResource = colonyResources.find(colonyResource => (colonyResource.colonyId === transientState.selectedColony && colonyResource.mineralId === transientState.selectedMineral))
         addColonyMineral(foundColonyResource.id)
         renderColonies();
+        
         const foundFacilityResource = facilityResources.find(facilityResource => (facilityResource.facilityId === transientState.selectedFacility && facilityResource.mineralId === transientState.selectedMineral))
         substractFacilityMineral(foundFacilityResource.id)
+        
         //renderFacilities();
         transientState.quantity = 0;
         purchaseJustMade = true;
