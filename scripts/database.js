@@ -132,7 +132,7 @@ export const getCart = () => {
 
 export const substractFacilityMineral = (facilityResourceId) => {
     const facilityResourceObj = database.facilityResources.find(facilityResource => facilityResource.id === facilityResourceId)
-    facilityResourceObj.quantity--;
+    facilityResourceObj.quantity -= database.transientState.quantity;
 }
 
 //function where inventory is added to colony resources
