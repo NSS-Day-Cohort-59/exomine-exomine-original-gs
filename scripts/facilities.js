@@ -10,17 +10,15 @@ const FacilityResources = getfacilityResources()
 
 const Facilities = () => {
 
-    let html = `<ul><select id="facility"><option value ="0">Select Facility`
+    let html = `<select id="facility"><option value ="0">Select Facility`
 
     facilities.forEach(facility => {
         if (facility.active) {
-            html += `<li>
-        <option value="${facility.id}"/>${facility.name}
-        </li>`
+            html += `<option value="${facility.id}"/>${facility.name}`
         }
     })
 
-    html += `</select></ul>`
+    html += `</select>`
     return html
 }
 
