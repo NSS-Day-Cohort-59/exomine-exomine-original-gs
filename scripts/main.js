@@ -16,7 +16,7 @@ const applicationHTML = `
 <section class="facilities"><select name="facilities" id="facilitiesDropdown" disabled> <option value="0">Select a facility</option> </select>
 </section></div></td>
 
-<center><td><section class="colonies"><h3>Colony Minerals</h3></section></center></td></tr>
+<td><center><section class="colonies"><h3>Colony Minerals</h3></section></center></td></tr>
 
 <div><td><section class="bottom"><section class="facility-minerals">
 <center><h3>Facility Minerals</h3></center>
