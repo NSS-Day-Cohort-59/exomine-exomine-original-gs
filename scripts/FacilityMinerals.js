@@ -5,15 +5,19 @@ const facilityResources = getFacilities()
 const colonyResources = getColonies()
 const transientState = getTransientState()
 
-const facilities = getFacilities()
-const minerals = getMinerals()
-const FacilityResources = getfacilityResources()
+
 
 
 document.addEventListener(
   "change",
   (event) => {
-      const facilityClicked = event.target
+    if (event.target.id === "facility") {
+        renderFacilityMinerals();
+    }
+
+}
+)
+/*      const facilityClicked = event.target
 
       if (event.target.id === "facility") {
 
@@ -44,13 +48,40 @@ document.addEventListener(
           html += "</ul>"
           const parentHTML = document.querySelector(".facility-minerals__display")
           parentHTML.innerHTML = html;
-      }
-  }
-)
+      } */
+
+
+const facilityMinerals = () => {
+    const facilities = getFacilities()
+    const minerals = getMinerals()
+    const FacilityResources = getfacilityResources()
+    let html = "<ul>"
+    let selectedFacility = document.querySelector("#facility")
+    if (parseInt(selectedFacility.value) > 0) {
+        let foundFacility = facilities.find(facility => facility.id === parseInt(selectedFacility.value))
+        setFacility(foundFacility.id);
+        let matchedFacilityResources = null;
+        for(const resources of FacilityResources) {
+            if(foundFacility.id === resources.facilityId) {
+                matchedFacilityResources = resources
+                for(const mineral of minerals) {
+                    if (matchedFacilityResources.mineralId === mineral.id && (matchedFacilityResources.quantity > 0)) {
+                        html += `<li>
+                                <input type="radio" name="mineral" value="${mineral.id}"/>${matchedFacilityResources.quantity} tons of ${mineral.name}
+                        </li>`
+                    }
+                }
+            }
+        }
+    }
+    html += "</ul>"
+    return html;
+
+}
 
 export const renderFacilityMinerals = () => {
   const parentHTML = document.querySelector(".facility-minerals__display")
-  parentHTML.innerHTML = getfacilityResources()
+  parentHTML.innerHTML = facilityMinerals()
 }
 
 
