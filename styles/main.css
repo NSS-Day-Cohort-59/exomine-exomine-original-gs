@@ -72,8 +72,8 @@ h3 {
     border: 2px solid rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     background-color: #ccafff;
-    margin: 10px 10px 20px 10px;
     display: block;
+    margin: 20px 0px 20px 0px;
     padding-bottom: 15px;
     
 }
@@ -82,8 +82,9 @@ h3 {
     border: 2px solid rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     background-color: #ccafff;
-    margin: 10px 10px 20px 10px;
+    margin: 0px 0px 20px 0px;
     display: block;
+    align-content: center;
     
 }
 
@@ -95,7 +96,7 @@ h3 {
     border: 2px solid rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     background-color: #ccafff;
-    margin: 0px 0px 20px 0px;
+    margin: 20px 0px 20px 0px;
     display: block;
     width: 300px;
     height: 120px;
@@ -103,7 +104,7 @@ h3 {
 }
 
 .facility-minerals__display {
-padding-right: 12%;
+padding-right: 15%;
 }
 
 
