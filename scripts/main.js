@@ -1,6 +1,5 @@
 import { Governors } from "./governors.js"
-import { renderFacilities } from "./facilities.js"
-import { renderCart } from "./cart.js"
+
 
 const mainContainer = document.querySelector("#container");
 

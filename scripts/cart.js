@@ -1,13 +1,12 @@
-import { getCart, getMinerals, getFacilities, getfacilityResources, getTransientState, getColonyResources, addColonyMineral, substractFacilityMineral, setMineral, setQuantity, pushToCart, setFacility, setColony } from "./database.js"
+import { getCart, getMinerals, getFacilities, getfacilityResources, getTransientState, getColonyResources, substractFacilityMineral, setMineral, setQuantity, pushToCart, setFacility, setColony, database } from "./database.js"
 import { renderFacilityMinerals } from "./FacilityMinerals.js"
 import { renderColonies } from "./colonies.js"
-import { renderFacilities } from "./facilities.js"
 
 
 const minerals = getMinerals()
 const facilities = getFacilities()
-const colonyResources = getColonyResources()
 //make variables that contain the facility and mineral selected from facilities module
+
 // creates the HTML in the cart
 export const Cart = () => {
     //Call getCart and store the array in a variable.
@@ -57,33 +56,22 @@ document.addEventListener(
     "click",
     (event) => {
         if (event.target.id === "orderButton") {
-        let facilityMineralId = null
-        let colonyMineralId = null
-        
-        const foundColonyResource = colonyResources.find(colonyResource => (colonyResource.colonyId === transientState.selectedColony && colonyResource.mineralId === transientState.selectedMineral))
-        addColonyMineral(foundColonyResource.id)
+            database.Cart.forEach(order => {
+                if (order.quantity > 0){
+                    database.colonyResources.forEach(resource => {
+                        if (order.selectedMineral === resource.mineralId && order.selectedColony === resource.colonyId){
+                            resource.quantity += order.quantity;
+                    }
+                })
+            }
+        }
+        )
         renderColonies();
-        
-       // const foundFacilityResource = facilityResources.find(facilityResource => (facilityResource.facilityId === transientState.selectedFacility && facilityResource.mineralId === transientState.selectedMineral))
-       // substractFacilityMineral(foundFacilityResource.id)
-        
-        //renderFacilities();
-        
+        //deleting the Cart
+        database.Cart = []
+    }
         renderCart();
         }
-    }
 )
-
-
-// User clicks order button
-// When click we have all id's in transient state
-// When click add one ton of particular mineral to colony
-    // match up the colonyID and mineralId to link to the correct colonyResource object 
-    // Add one ton to the quantity property of the colonyResource obj
-// subtract one ton of particular mineral from facility
-    // match facilityId and mineralId to link to correct facilityResources object
-    // subtract one ton from the quantity property of the facilityResources obj
-// empty out cart display
-
 
 

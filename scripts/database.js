@@ -177,10 +177,10 @@ export const substractFacilityMineral = (facilityResourceId) => {
 // use .find on colonyResources to find matching primary key
 // access quantity property on this object
 // increment the quantity property
-export const addColonyMineral = (colonyResourceId) => {
-    const colonyResourceObj = database.colonyResources.find(colonyResource => colonyResource.id === colonyResourceId)
-    colonyResourceObj.quantity += database.transientState.quantity;
-}
+// export const addColonyMineral = (colonyResourceId) => {
+//     const colonyResourceObj = database.colonyResources.find(colonyResource => colonyResource.id === colonyResourceId)
+//     colonyResourceObj.quantity += Cart.quantity;
+// }
 
 export const purchaseMineral = () => {
 

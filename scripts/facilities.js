@@ -1,8 +1,6 @@
-import { getFacilities, setFacility, setMineral, getMinerals, getfacilityResources, database } from "./database.js"
+import { getFacilities } from "./database.js"
 
 const facilities = getFacilities()
-const minerals = getMinerals()
-const FacilityResources = getfacilityResources()
 
 
 
