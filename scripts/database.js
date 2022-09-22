@@ -91,14 +91,14 @@ export const setMineral = (mineralId) => {
 
 export const setColony = () => {
     //database.transientState.selectedColony = colonyId
-     let matchGovernor = document.querySelector("#governor");
-     let foundGovernor = database.governors.find(governor => governor.id === parseInt(matchGovernor.value))
-     for(const colony of database.colonies) {
-        if(foundGovernor.colonyId === colony.id) {
+    let matchGovernor = document.querySelector("#governor");
+    let foundGovernor = database.governors.find(governor => governor.id === parseInt(matchGovernor.value))
+    for (const colony of database.colonies) {
+        if (foundGovernor.colonyId === colony.id) {
             database.transientState.selectedColony = colony.id;
         }
-     }
-    
+    }
+
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
@@ -111,7 +111,6 @@ export const setQuantity = (quantity) => {
 // In case of similar object, quantity on said object is incremented instead.
 export const pushToCart = () => {
     //Find an object in Cart with same properties as transient state.
-    console.log(database.transientState)
     let foundObject = database.Cart.find(obj => obj.selectedFacility === database.transientState.selectedFacility && obj.selectedMineral === database.transientState.selectedMineral)
     //If found  object, increase quantity by 1.
     if (foundObject) {

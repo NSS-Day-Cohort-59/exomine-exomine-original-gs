@@ -12,7 +12,6 @@ const colonyResources = getColonyResources()
 const transientState = getTransientState()
 // creates the HTML in the cart
 export const Cart = () => {
-<<<<<<< HEAD
     //Call getCart and store the array in a variable.
     const cartContents = getCart()
     //Declare a variable with opening string.
@@ -26,28 +25,6 @@ export const Cart = () => {
     //Append string with closing html.
     html += "</ul>"
     //Return string.
-=======
-    // creates the HTML in the cart
-
-    let html = ""
-
-    if (transientState.selectedFacility && !purchaseJustMade) {
-
-        const facilityChosen = facilities.find(facility => facility.id === transientState.selectedFacility)
-
-        const mineralChosen = minerals.find(mineral => mineral.id === transientState.selectedMineral)
-
-
-        html += `<div class="cartContents">
-        ${transientState.quantity} tons of ${mineralChosen?.name} from ${facilityChosen?.name}
-    </div>`
-    }
-    else {
-        html += `<div class="cartContents">
-    </div>`
-    purchaseJustMade = false;
-    }
->>>>>>> main
     return html;
 }
 
@@ -63,16 +40,10 @@ document.addEventListener(
         if (event.target.name === "mineral") {
             setMineral(parseInt(event.target.value))
             setQuantity(1)
-<<<<<<< HEAD
             setFacility()
             setColony()
             const foundFacilityResource = facilityResources.find(facilityResource => (facilityResource.facilityId === transientState.selectedFacility && facilityResource.mineralId === transientState.selectedMineral))
             substractFacilityMineral(foundFacilityResource.id)
-=======
-
-            let facilityMineralId = null
-            let colonyMineralId = null
->>>>>>> main
 
             pushToCart()  
 
