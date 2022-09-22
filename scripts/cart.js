@@ -1,4 +1,4 @@
-import { getCart, getMinerals, getFacilities, getfacilityResources, getTransientState, getColonyResources, addColonyMineral, substractFacilityMineral, setMineral, setQuantity, pushToCart, setFacility, setColony } from "./database.js"
+import { getCart, getMinerals, getFacilities, getfacilityResources, getTransientState, getColonyResources, addColonyMineral, substractFacilityMineral, setMineral, setQuantity, pushToCart, setFacility, setColony, database } from "./database.js"
 import { renderFacilityMinerals } from "./FacilityMinerals.js"
 import { renderColonies } from "./colonies.js"
 import { renderFacilities } from "./facilities.js"
@@ -10,6 +10,8 @@ const facilityResources = getfacilityResources()
 const colonyResources = getColonyResources()
 //make variables that contain the facility and mineral selected from facilities module
 const transientState = getTransientState()
+const allOrders = getCart()
+
 // creates the HTML in the cart
 export const Cart = () => {
     //Call getCart and store the array in a variable.
@@ -56,8 +58,17 @@ document.addEventListener(
     "click",
     (event) => {
         if (event.target.id === "orderButton") {
-        let facilityMineralId = null
-        let colonyMineralId = null
+        let matchingColony = allOrders.forEach(order => {
+            if (order.quantity > 0){
+                let matchedOrder = allOrders.forEach(order => {
+                    if (order.selectedColony === colonyResources.colonyId && order.selectedMineral === colonyResources.mineralId){
+                        colonyResources.quantity += order.quantity
+                    }
+                })
+            }
+        }
+        )
+    }
         
         const foundColonyResource = colonyResources.find(colonyResource => (colonyResource.colonyId === transientState.selectedColony && colonyResource.mineralId === transientState.selectedMineral))
         addColonyMineral(foundColonyResource.id)
@@ -71,7 +82,6 @@ document.addEventListener(
         renderFacilityMinerals();
         renderCart();
         }
-    }
 )
 
 
