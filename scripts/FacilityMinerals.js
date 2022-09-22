@@ -76,7 +76,6 @@ const facilityMinerals = () => {
     }
     html += "</ul>"
     return html;
-
 }
 
 export const renderFacilityMinerals = () => {
