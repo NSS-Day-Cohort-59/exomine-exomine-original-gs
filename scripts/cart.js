@@ -1,4 +1,4 @@
-import { getCart, getMinerals, getFacilities, getfacilityResources, getTransientState, getColonyResources, addColonyMineral, substractFacilityMineral, setMineral, setQuantity, pushToCart, setFacility, setColony, database } from "./database.js"
+import { getCart, getMinerals, getFacilities, getfacilityResources, getTransientState, getColonyResources, substractFacilityMineral, setMineral, setQuantity, pushToCart, setFacility, setColony, database } from "./database.js"
 import { renderFacilityMinerals } from "./FacilityMinerals.js"
 import { renderColonies } from "./colonies.js"
 import { renderFacilities } from "./facilities.js"
@@ -6,10 +6,8 @@ import { renderFacilities } from "./facilities.js"
 
 const minerals = getMinerals()
 const facilities = getFacilities()
-const colonyResources = getColonyResources()
 //make variables that contain the facility and mineral selected from facilities module
 const transientState = getTransientState()
-const allOrders = getCart()
 
 // creates the HTML in the cart
 export const Cart = () => {
@@ -50,7 +48,6 @@ document.addEventListener(
             renderFacilityMinerals();
             
             pushToCart()  
-            console.log(allOrders)
             
             renderCart()
     }
@@ -61,27 +58,20 @@ document.addEventListener(
     "click",
     (event) => {
         if (event.target.id === "orderButton") {
-            allOrders.forEach(order => {
+            database.Cart.forEach(order => {
                 if (order.quantity > 0){
-                    colonyResources.forEach(resource => {
-                        if (order.selectedMineral === resource.mineralId){
-                        addColonyMineral(order.selectedColony)
-                        //deletes items in cart
-                        allOrders.length = 0
+                    database.colonyResources.forEach(resource => {
+                        if (order.selectedMineral === resource.mineralId && order.selectedColony === resource.colonyId){
+                            resource.quantity += order.quantity;
                     }
                 })
             }
         }
         )
-    }
-        
         renderColonies();
-        
-       // const foundFacilityResource = facilityResources.find(facilityResource => (facilityResource.facilityId === transientState.selectedFacility && facilityResource.mineralId === transientState.selectedMineral))
-       // substractFacilityMineral(foundFacilityResource.id)
-        
-        //renderFacilities();
-        
+        //deleting the Cart
+        database.Cart = []
+    }
         renderCart();
         }
 )
