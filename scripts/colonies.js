@@ -1,4 +1,4 @@
-import { getColonies, getColonyResources, getMinerals, getGovernors, setColony } from "./database.js";
+import { getColonies, getColonyResources, getMinerals, getGovernors } from "./database.js";
 
 
 const Colonies = () => {

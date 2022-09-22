@@ -1,13 +1,11 @@
 import { getCart, getMinerals, getFacilities, getfacilityResources, getTransientState, getColonyResources, substractFacilityMineral, setMineral, setQuantity, pushToCart, setFacility, setColony, database } from "./database.js"
 import { renderFacilityMinerals } from "./FacilityMinerals.js"
 import { renderColonies } from "./colonies.js"
-import { renderFacilities } from "./facilities.js"
 
 
 const minerals = getMinerals()
 const facilities = getFacilities()
 //make variables that contain the facility and mineral selected from facilities module
-const transientState = getTransientState()
 
 // creates the HTML in the cart
 export const Cart = () => {
@@ -75,17 +73,5 @@ document.addEventListener(
         renderCart();
         }
 )
-
-
-// User clicks order button
-// When click we have all id's in transient state
-// When click add one ton of particular mineral to colony
-    // match up the colonyID and mineralId to link to the correct colonyResource object 
-    // Add one ton to the quantity property of the colonyResource obj
-// subtract one ton of particular mineral from facility
-    // match facilityId and mineralId to link to correct facilityResources object
-    // subtract one ton from the quantity property of the facilityResources obj
-// empty out cart display
-
 
 
