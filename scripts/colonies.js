@@ -16,7 +16,7 @@ const Colonies = () => {
         //Match the governor to a colony.
         let matchingColony = colonies.find(colony => colony.id === foundGovernor.colonyId)
         //Set ColonyId in transient state
-        setColony(matchingColony.id)
+        // setColony(matchingColony.id)  //delete?
         //Create HTML for colony name
         let html = `<h3>${matchingColony.name} Minerals</h3>`
         //Iterate through colony resources and for each 

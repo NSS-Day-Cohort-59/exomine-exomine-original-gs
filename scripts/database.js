@@ -70,11 +70,12 @@ export const database = {
         //Needs to store selected facilityIds and mineralIds
     },
     Cart: []
-    
+
 }
 
-export const setFacility = (facilityId) => {
-    database.transientState.selectedFacility = facilityId
+export const setFacility = () => {
+    let currentFacility = document.querySelector("#facility")
+    database.transientState.selectedFacility = parseInt(currentFacility.value)
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
@@ -95,7 +96,24 @@ export const setColony = (colonyId) => {
 
 export const setQuantity = (quantity) => {
     database.transientState.quantity = quantity
-    document.dispatchEvent( new CustomEvent("stateChanged"))
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
+
+//Function pushes transient state to cart if similar object does not yet exist.
+// In case of similar object, quantity on said object is incremented instead.
+export const pushToCart = () => {
+    //Find an object in Cart with same properties as transient state.
+    console.log(database.transientState)
+    let foundObject = database.Cart.find(obj => obj.selectedFacility === database.transientState.selectedFacility && obj.selectedMineral === database.transientState.selectedMineral)
+    //If found  object, increase quantity by 1.
+    if (foundObject) {
+        foundObject.quantity++
+    } else {
+        //Else push transientState to Cart.
+        database.Cart.push(database.transientState)
+    }
+    //reset transientState to an empty object
+    database.transientState = {}
 }
 
 export const getfacilityResources = () => {
@@ -125,7 +143,7 @@ export const getTransientState = () => {
 }
 
 export const getCart = () => {
-    return database.transientState.map(c => ({ ...c }))
+    return database.Cart.map(obj => ({ ...obj }))
 }
 
 // function where inventory is subtracted from facility resources

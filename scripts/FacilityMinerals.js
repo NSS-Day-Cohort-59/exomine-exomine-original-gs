@@ -9,13 +9,13 @@ const transientState = getTransientState()
 
 
 document.addEventListener(
-  "change",
-  (event) => {
-    if (event.target.id === "facility") {
-        renderFacilityMinerals();
-    }
+    "change",
+    (event) => {
+        if (event.target.id === "facility") {
+            renderFacilityMinerals();
+        }
 
-}
+    }
 )
 /*      const facilityClicked = event.target
 
@@ -59,12 +59,12 @@ const facilityMinerals = () => {
     let selectedFacility = document.querySelector("#facility")
     if (parseInt(selectedFacility.value) > 0) {
         let foundFacility = facilities.find(facility => facility.id === parseInt(selectedFacility.value))
-        setFacility(foundFacility.id);
+        //setFacility(foundFacility.id); //delete?
         let matchedFacilityResources = null;
-        for(const resources of FacilityResources) {
-            if(foundFacility.id === resources.facilityId) {
+        for (const resources of FacilityResources) {
+            if (foundFacility.id === resources.facilityId) {
                 matchedFacilityResources = resources
-                for(const mineral of minerals) {
+                for (const mineral of minerals) {
                     if (matchedFacilityResources.mineralId === mineral.id && (matchedFacilityResources.quantity > 0)) {
                         html += `<li>
                                 <input type="radio" name="mineral" value="${mineral.id}"/>${matchedFacilityResources.quantity} tons of ${mineral.name}
@@ -80,8 +80,8 @@ const facilityMinerals = () => {
 }
 
 export const renderFacilityMinerals = () => {
-  const parentHTML = document.querySelector(".facility-minerals__display")
-  parentHTML.innerHTML = facilityMinerals()
+    const parentHTML = document.querySelector(".facility-minerals__display")
+    parentHTML.innerHTML = facilityMinerals()
 }
 
 
