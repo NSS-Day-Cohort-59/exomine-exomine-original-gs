@@ -24,7 +24,7 @@ export const Cart = () => {
 
 
         html += `<div class="cartContents">
-   ${transientState.quantity} tons of ${mineralChosen?.name} from ${facilityChosen?.name}
+        ${transientState.quantity} tons of ${mineralChosen?.name} from ${facilityChosen?.name}
     </div>`
     }
     else {
@@ -47,6 +47,7 @@ document.addEventListener(
         if (event.target.name === "mineral") {
             setMineral(parseInt(event.target.value))
             setQuantity(1)
+
             let facilityMineralId = null
             let colonyMineralId = null
 
@@ -63,7 +64,7 @@ document.addEventListener(
         if (event.target.id === "orderButton") {
         let facilityMineralId = null
         let colonyMineralId = null
-
+        
         const foundColonyResource = colonyResources.find(colonyResource => (colonyResource.colonyId === transientState.selectedColony && colonyResource.mineralId === transientState.selectedMineral))
         addColonyMineral(foundColonyResource.id)
         renderColonies();
