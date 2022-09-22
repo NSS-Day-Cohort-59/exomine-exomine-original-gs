@@ -88,8 +88,16 @@ export const setMineral = (mineralId) => {
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
-export const setColony = (colonyId) => {
-    database.transientState.selectedColony = colonyId
+export const setColony = () => {
+    //database.transientState.selectedColony = colonyId
+     let matchGovernor = document.querySelector("#governor");
+     let foundGovernor = database.governors.find(governor => governor.id === parseInt(matchGovernor.value))
+     for(const colony of database.colonies) {
+        if(foundGovernor.colonyId === colony.id) {
+            database.transientState.selectedColony = colony.id;
+        }
+     }
+    
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
