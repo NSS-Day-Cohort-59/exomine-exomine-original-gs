@@ -1,6 +1,9 @@
 import { Governors } from "./governors.js"
 import { renderFacilities } from "./facilities.js"
 import { renderCart } from "./cart.js"
+import { star } from "./sparkles.js"
+
+const stars = star
 
 const mainContainer = document.querySelector("#container");
 
@@ -13,10 +16,10 @@ const applicationHTML = `
 <tr><td>Select a Governor... ${Governors()}
 
 <div>Select a Facility...
-<section class="facilities"><select name="facilities" id="facilitiesDropdown" disabled> <option value="0">Select a facility</option> </select>
+<section class="facilities"><select name="facilities" id="facilitiesDropdown" disabled> <option value="0">Select a Facility</option> </select>
 </section></div></td>
 
-<center><td><section class="colonies"><h3>Colony Minerals</h3></section></center></td></tr>
+<td><center><section class="colonies"><h3>Colony Minerals</h3></section></center></td></tr>
 
 <div><td><section class="bottom"><section class="facility-minerals">
 <center><h3>Facility Minerals</h3></center>
