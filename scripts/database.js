@@ -70,11 +70,12 @@ export const database = {
         //Needs to store selected facilityIds and mineralIds
     },
     Cart: []
-    
+
 }
 
-export const setFacility = (facilityId) => {
-    database.transientState.selectedFacility = facilityId
+export const setFacility = () => {
+    let currentFacility = document.querySelector("#facility")
+    database.transientState.selectedFacility = parseInt(currentFacility.value)
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
@@ -88,14 +89,38 @@ export const setMineral = (mineralId) => {
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
-export const setColony = (colonyId) => {
-    database.transientState.selectedColony = colonyId
+export const setColony = () => {
+    //database.transientState.selectedColony = colonyId
+    let matchGovernor = document.querySelector("#governor");
+    let foundGovernor = database.governors.find(governor => governor.id === parseInt(matchGovernor.value))
+    for (const colony of database.colonies) {
+        if (foundGovernor.colonyId === colony.id) {
+            database.transientState.selectedColony = colony.id;
+        }
+    }
+
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
 export const setQuantity = (quantity) => {
     database.transientState.quantity = quantity
-    document.dispatchEvent( new CustomEvent("stateChanged"))
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
+
+//Function pushes transient state to cart if similar object does not yet exist.
+// In case of similar object, quantity on said object is incremented instead.
+export const pushToCart = () => {
+    //Find an object in Cart with same properties as transient state.
+    let foundObject = database.Cart.find(obj => obj.selectedFacility === database.transientState.selectedFacility && obj.selectedMineral === database.transientState.selectedMineral)
+    //If found  object, increase quantity by 1.
+    if (foundObject) {
+        foundObject.quantity++
+    } else {
+        //Else push transientState to Cart.
+        database.Cart.push(database.transientState)
+    }
+    //reset transientState to an empty object
+    database.transientState = {}
 }
 
 export const getfacilityResources = () => {
@@ -125,7 +150,7 @@ export const getTransientState = () => {
 }
 
 export const getCart = () => {
-    return database.transientState.map(c => ({ ...c }))
+    return database.Cart.map(obj => ({ ...obj }))
 }
 
 // function where inventory is subtracted from facility resources
