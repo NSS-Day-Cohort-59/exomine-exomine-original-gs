@@ -6,10 +6,8 @@ import { renderFacilities } from "./facilities.js"
 
 const minerals = getMinerals()
 const facilities = getFacilities()
-const facilityResources = getfacilityResources()
 const colonyResources = getColonyResources()
 //make variables that contain the facility and mineral selected from facilities module
-const transientState = getTransientState()
 // creates the HTML in the cart
 export const Cart = () => {
     //Call getCart and store the array in a variable.
@@ -36,18 +34,21 @@ export const renderCart = () => {
 document.addEventListener(
     "click",
     (event) => {
-
+        
         if (event.target.name === "mineral") {
             setMineral(parseInt(event.target.value))
             setQuantity(1)
             setFacility()
             setColony()
+            const transientState = getTransientState()
+            const facilityResources = getfacilityResources()
             const foundFacilityResource = facilityResources.find(facilityResource => (facilityResource.facilityId === transientState.selectedFacility && facilityResource.mineralId === transientState.selectedMineral))
             substractFacilityMineral(foundFacilityResource.id)
-
+            renderFacilityMinerals();
+            
             pushToCart()  
-
-        renderCart()
+            
+            renderCart()
     }
     }
 )
@@ -67,8 +68,7 @@ document.addEventListener(
        // substractFacilityMineral(foundFacilityResource.id)
         
         //renderFacilities();
-        transientState.quantity = 0;
-        renderFacilityMinerals();
+        
         renderCart();
         }
     }
