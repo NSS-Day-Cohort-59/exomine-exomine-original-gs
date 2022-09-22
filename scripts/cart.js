@@ -1,4 +1,4 @@
-import { getMinerals, getFacilities, getfacilityResources, getTransientState, getColonyResources, addColonyMineral, substractFacilityMineral, setMineral, setQuantity } from "./database.js"
+import { getCart, getMinerals, getFacilities, getfacilityResources, getTransientState, getColonyResources, addColonyMineral, substractFacilityMineral, setMineral, setQuantity, pushToCart, setFacility, setColony } from "./database.js"
 import { renderFacilityMinerals } from "./FacilityMinerals.js"
 import { renderColonies } from "./colonies.js"
 import { renderFacilities } from "./facilities.js"
@@ -10,28 +10,21 @@ const facilityResources = getfacilityResources()
 const colonyResources = getColonyResources()
 //make variables that contain the facility and mineral selected from facilities module
 const transientState = getTransientState()
-let purchaseJustMade = false;
+// creates the HTML in the cart
 export const Cart = () => {
-    // creates the HTML in the cart
-
-    let html = ""
-
-    if (transientState.selectedFacility && !purchaseJustMade) {
-
-        const facilityChosen = facilities.find(facility => facility.id === transientState.selectedFacility)
-
-        const mineralChosen = minerals.find(mineral => mineral.id === transientState.selectedMineral)
-
-
-        html += `<div class="cartContents">
-        ${transientState.quantity} tons of ${mineralChosen?.name} from ${facilityChosen?.name}
-    </div>`
-    }
-    else {
-        html += `<div class="cartContents">
-    </div>`
-    purchaseJustMade = false;
-    }
+    //Call getCart and store the array in a variable.
+    const cartContents = getCart()
+    //Declare a variable with opening string.
+    let html = `<ul class="cartContents">`
+    //Iterate the Cart array and build html for each object.
+    cartContents.forEach(obj => {
+        html += `<li>${obj.quantity} tons of 
+        ${minerals.find(mineral => mineral.id === obj.selectedMineral).name} from 
+        ${facilities.find(facility => facility.id === obj.selectedFacility).name}</li>`
+    })
+    //Append string with closing html.
+    html += "</ul>"
+    //Return string.
     return html;
 }
 
@@ -47,11 +40,12 @@ document.addEventListener(
         if (event.target.name === "mineral") {
             setMineral(parseInt(event.target.value))
             setQuantity(1)
+            setFacility()
+            setColony()
+            const foundFacilityResource = facilityResources.find(facilityResource => (facilityResource.facilityId === transientState.selectedFacility && facilityResource.mineralId === transientState.selectedMineral))
+            substractFacilityMineral(foundFacilityResource.id)
 
-            let facilityMineralId = null
-            let colonyMineralId = null
-
-            
+            pushToCart()  
 
         renderCart()
     }
@@ -69,12 +63,11 @@ document.addEventListener(
         addColonyMineral(foundColonyResource.id)
         renderColonies();
         
-        const foundFacilityResource = facilityResources.find(facilityResource => (facilityResource.facilityId === transientState.selectedFacility && facilityResource.mineralId === transientState.selectedMineral))
-        substractFacilityMineral(foundFacilityResource.id)
+       // const foundFacilityResource = facilityResources.find(facilityResource => (facilityResource.facilityId === transientState.selectedFacility && facilityResource.mineralId === transientState.selectedMineral))
+       // substractFacilityMineral(foundFacilityResource.id)
         
         //renderFacilities();
         transientState.quantity = 0;
-        purchaseJustMade = true;
         renderFacilityMinerals();
         renderCart();
         }
