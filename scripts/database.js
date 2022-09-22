@@ -166,8 +166,9 @@ export const substractFacilityMineral = (facilityResourceId) => {
 // access quantity property on this object
 // increment the quantity property
 export const addColonyMineral = (colonyResourceId) => {
+    const NewCart = getCart()
     const colonyResourceObj = database.colonyResources.find(colonyResource => colonyResource.id === colonyResourceId)
-    colonyResourceObj.quantity += database.transientState.quantity;
+    colonyResourceObj.quantity += NewCart.quantity;
 }
 
 export const purchaseMineral = () => {

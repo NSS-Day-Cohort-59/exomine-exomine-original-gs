@@ -50,6 +50,7 @@ document.addEventListener(
             renderFacilityMinerals();
             
             pushToCart()  
+            console.log(allOrders)
             
             renderCart()
     }
@@ -60,11 +61,13 @@ document.addEventListener(
     "click",
     (event) => {
         if (event.target.id === "orderButton") {
-        let matchingColony = allOrders.forEach(order => {
-            if (order.quantity > 0){
-                let matchedOrder = allOrders.forEach(order => {
-                    if (order.selectedColony === colonyResources.colonyId && order.selectedMineral === colonyResources.mineralId){
-                        colonyResources.quantity += order.quantity
+            allOrders.forEach(order => {
+                if (order.quantity > 0){
+                    colonyResources.forEach(resource => {
+                        if (order.selectedMineral === resource.mineralId){
+                        addColonyMineral(order.selectedColony)
+                        //deletes items in cart
+                        allOrders.length = 0
                     }
                 })
             }
@@ -72,8 +75,6 @@ document.addEventListener(
         )
     }
         
-        const foundColonyResource = colonyResources.find(colonyResource => (colonyResource.colonyId === transientState.selectedColony && colonyResource.mineralId === transientState.selectedMineral))
-        addColonyMineral(foundColonyResource.id)
         renderColonies();
         
        // const foundFacilityResource = facilityResources.find(facilityResource => (facilityResource.facilityId === transientState.selectedFacility && facilityResource.mineralId === transientState.selectedMineral))
