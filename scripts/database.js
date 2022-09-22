@@ -73,6 +73,18 @@ export const database = {
 
 }
 
+
+export const returnMinerals = () => {
+    database.Cart.forEach(cartObj => {
+        const foundFacilityResource = database.facilityResources.find(facilityResourceObj => (facilityResourceObj.facilityId === cartObj.selectedFacility && facilityResourceObj.mineralId === cartObj.selectedMineral))
+        foundFacilityResource.quantity += cartObj.quantity;
+    })
+
+    database.Cart = [];
+}
+
+
+
 export const setFacility = () => {
     let currentFacility = document.querySelector("#facility")
     database.transientState.selectedFacility = parseInt(currentFacility.value)
