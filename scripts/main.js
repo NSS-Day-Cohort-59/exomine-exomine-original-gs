@@ -1,9 +1,6 @@
 import { Governors } from "./governors.js"
 import { renderFacilities } from "./facilities.js"
 import { renderCart } from "./cart.js"
-import { star } from "./sparkles.js"
-
-const stars = star
 
 const mainContainer = document.querySelector("#container");
 

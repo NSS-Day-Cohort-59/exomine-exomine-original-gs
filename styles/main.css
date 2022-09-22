@@ -1,15 +1,26 @@
 table {
     height: 600px;
-    width: 1000px;
-    padding-bottom: 20%;
-    padding-top: 5%;
+    width: 900px;
+    padding-bottom: 1%;
+    padding-top: 2%;
 }
 
-body {
-    background-color: #f5eafd;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    justify-content: center;
+header {
+    text-align: center;
+    border: 2px solid black;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    margin: 0px 0px 20px 0px;
+    padding: 40px 0px 40px 0px;
+    background-image: url("https://www.stsci.edu/files/live/sites/www/files/home/_images/gallery-items/small-magellanic-cloud.jpg");
+    background-size: cover;
 }
+
+body{
+    background-color: #f5eafd;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    justify-content:center;
+  }
 
 ul {
     list-style: none;
@@ -39,16 +50,6 @@ select {
 }
 
 
-header {
-    text-align: center;
-    border: 2px solid black;
-    font-weight: bold;
-    color: rgb(255, 255, 255);
-    margin: 0px 0px 20px 0px;
-    padding: 40px 0px 40px 0px;
-    background-image: url("https://www.stsci.edu/files/live/sites/www/files/home/_images/gallery-items/small-magellanic-cloud.jpg");
-    background-size: cover;
-}
 
 h2 {
     border: 2px solid rgb(255, 255, 255);
@@ -327,15 +328,4 @@ h3 {
     left: 0;
     top: 0;
     border-radius: 10px;
-}
-
-@keyframes fallingsparkles {
-    from {
-        transform: translateY(0);
-    }
-
-    to {
-        transform: translateY(50px);
-        background: #a600ff
-    }
 }
