@@ -53,7 +53,7 @@ export const database = {
         { id: 4, facilityId: 4, mineralId: 5, quantity: 25 },
         { id: 5, facilityId: 3, mineralId: 4, quantity: 88 },
         { id: 6, facilityId: 5, mineralId: 6, quantity: 77 },
-        { id: 7, facilityId: 4, mineralId: 7, quantity: 99 }
+        { id: 7, facilityId: 4, mineralId: 3, quantity: 99 }
     ],
     minerals: [
         { id: 1, name: "Iron" },
@@ -61,8 +61,7 @@ export const database = {
         { id: 3, name: "Bronze" },
         { id: 4, name: "Gold" },
         { id: 5, name: "Silver" },
-        { id: 6, name: "Copper" },
-        { id: 7, name: "Bronze" }
+        { id: 6, name: "Copper" }
 
     ],
 
